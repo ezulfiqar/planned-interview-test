@@ -41,17 +41,23 @@ export const UsersTable = ({
             </StyledHeaderRow>
           </thead>
           <tbody>
-            {users.map((user) => (
-              <StyledRow key={user.email}>
-                <td>
-                  <input type="checkbox" />
-                </td>
-                <td>
-                  {user.name.firstName} {user.name.lastName}
-                </td>
-                <td>{user.age}</td>
-              </StyledRow>
-            ))}
+            {users
+              .filter((user) =>
+                `${user.name.firstName} ${user.name.lastName}`
+                  .toLowerCase()
+                  .includes(searchValue.toLowerCase())
+              )
+              .map((user) => (
+                <StyledRow key={user.email}>
+                  <td>
+                    <input type="checkbox" />
+                  </td>
+                  <td>
+                    {user.name.firstName} {user.name.lastName}
+                  </td>
+                  <td>{user.age}</td>
+                </StyledRow>
+              ))}
           </tbody>
         </StyledTable>
       ) : (
