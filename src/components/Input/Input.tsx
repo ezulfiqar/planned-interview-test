@@ -8,6 +8,7 @@ import {
 
 export type InputPropsType = {
   autoComplete?: string;
+  disabled?: boolean;
   icon?: string;
   label?: string;
   name: string;
@@ -19,6 +20,7 @@ export type InputPropsType = {
 
 export const Input = ({
   autoComplete,
+  disabled,
   icon,
   label,
   name,
@@ -33,6 +35,7 @@ export const Input = ({
       {icon && <StyledIcon alt="icon" src={`/${icon}`} />}
       <StyledInput
         autoComplete={autoComplete}
+        disabled={disabled}
         name={name}
         onChange={onChange}
         placeholder={placeholder}

@@ -31,4 +31,7 @@ export const StyledHeaderRow = styled.tr`
   & > th {
     padding: 16px;
   }
+  & > th:first-child {
+    width: 10px;
+  }
 `;

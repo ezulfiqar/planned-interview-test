@@ -10,39 +10,53 @@ import {
 } from "./UsersTable.styles";
 
 export type UsersTablePropsType = {
+  hasLoaded: boolean;
   isLoading: boolean;
   users: UserType[];
 };
 
-export const UsersTable = ({ isLoading, users }: UsersTablePropsType) => {
+export const UsersTable = ({
+  hasLoaded,
+  isLoading,
+  users,
+}: UsersTablePropsType) => {
   const [searchValue, setSearchValue] = useState("");
+  const hasUsers = users.length > 0 && !isLoading;
 
   return (
     <StyledCard>
-      <SearchInput setValue={setSearchValue} value={searchValue} />
+      <SearchInput
+        disabled={!hasUsers}
+        setValue={setSearchValue}
+        value={searchValue}
+      />
       <StyledHr />
-      <StyledTable>
-        <thead>
-          <StyledHeaderRow>
-            <th></th>
-            <th>Name</th>
-            <th>Age</th>
-          </StyledHeaderRow>
-        </thead>
-        <tbody>
-          {users.map((user) => (
-            <StyledRow key={user.email}>
-              <td>
-                <input type="checkbox" />
-              </td>
-              <td>
-                {user.name.firstName} {user.name.lastName}
-              </td>
-              <td>{user.age}</td>
-            </StyledRow>
-          ))}
-        </tbody>
-      </StyledTable>
+      {hasLoaded ? (
+        <StyledTable>
+          <thead>
+            <StyledHeaderRow>
+              <th></th>
+              <th>Name</th>
+              <th>Age</th>
+            </StyledHeaderRow>
+          </thead>
+          <tbody>
+            {users.map((user) => (
+              <StyledRow key={user.email}>
+                <td>
+                  <input type="checkbox" />
+                </td>
+                <td>
+                  {user.name.firstName} {user.name.lastName}
+                </td>
+                <td>{user.age}</td>
+              </StyledRow>
+            ))}
+          </tbody>
+        </StyledTable>
+      ) : (
+        <div>Use the button to retrieve users!</div>
+      )}
     </StyledCard>
   );
 };
