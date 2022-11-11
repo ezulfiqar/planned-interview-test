@@ -8,4 +8,5 @@ export const StyledContainer = styled.div`
 export const StyledWrapper = styled.div`
   display: flex;
   column-gap: 32px;
+  align-items: flex-start;
 `;
