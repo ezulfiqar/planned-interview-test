@@ -18,6 +18,9 @@ export const StyledTable = styled.table`
 
 export const StyledRow = styled.tr`
   border-bottom: 2px solid #f4f5f7;
+  &:last-of-type {
+    border-bottom: none;
+  }
   & > td {
     padding: 16px;
   }
