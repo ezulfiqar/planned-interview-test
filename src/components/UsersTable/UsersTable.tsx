@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { UserType } from "../../hooks";
+import { UserType } from "../../types";
 import { SearchInput } from "../SearchInput";
 import {
   StyledCard,
@@ -22,22 +22,26 @@ export const UsersTable = ({ isLoading, users }: UsersTablePropsType) => {
       <SearchInput setValue={setSearchValue} value={searchValue} />
       <StyledHr />
       <StyledTable>
-        <StyledHeaderRow>
-          <th></th>
-          <th>Name</th>
-          <th>Age</th>
-        </StyledHeaderRow>
-        {users.map((user) => (
-          <StyledRow>
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td>
-              {user.name.firstName} {user.name.lastName}
-            </td>
-            <td>{user.age}</td>
-          </StyledRow>
-        ))}
+        <thead>
+          <StyledHeaderRow>
+            <th></th>
+            <th>Name</th>
+            <th>Age</th>
+          </StyledHeaderRow>
+        </thead>
+        <tbody>
+          {users.map((user) => (
+            <StyledRow key={user.email}>
+              <td>
+                <input type="checkbox" />
+              </td>
+              <td>
+                {user.name.firstName} {user.name.lastName}
+              </td>
+              <td>{user.age}</td>
+            </StyledRow>
+          ))}
+        </tbody>
       </StyledTable>
     </StyledCard>
   );
