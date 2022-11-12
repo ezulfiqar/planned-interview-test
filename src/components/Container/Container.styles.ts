@@ -6,11 +6,11 @@ export const StyledContainer = styled.div`
 `;
 
 type StyledWrapperPropsType = {
-  hasLoaded: boolean;
+  isInitiated: boolean;
 };
 
 export const StyledWrapper = styled.div<StyledWrapperPropsType>`
   display: flex;
   column-gap: 32px;
-  align-items: ${(props) => (props.hasLoaded ? "flex-start" : "initial")};
+  align-items: ${(props) => (props.isInitiated ? "flex-start" : "initial")};
 `;
