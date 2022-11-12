@@ -48,7 +48,7 @@ export const Container = () => {
   return (
     <StyledContainer>
       <h2>Users</h2>
-      <StyledWrapper>
+      <StyledWrapper hasLoaded={hasLoaded}>
         <UsersFilter
           handleMaxAge={setMaxAge}
           handleMinAge={setMinAge}

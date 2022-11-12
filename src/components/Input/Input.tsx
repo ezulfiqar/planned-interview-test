@@ -30,7 +30,7 @@ export const Input = ({
   type,
 }: InputPropsType) => {
   return (
-    <StyledDiv>
+    <StyledDiv disabled={disabled}>
       {label && <StyledLabel htmlFor={name}>{label}</StyledLabel>}
       {icon && <StyledIcon alt="icon" src={`/${icon}`} />}
       <StyledInput

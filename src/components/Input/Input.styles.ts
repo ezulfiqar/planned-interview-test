@@ -1,6 +1,11 @@
 import styled from "styled-components";
 
-export const StyledDiv = styled.div`
+type StyledDivPropsType = {
+  disabled?: boolean;
+};
+
+export const StyledDiv = styled.div<StyledDivPropsType>`
+  background-color: ${(props) => (props.disabled ? "#fafafa" : "initial")};
   border-radius: 6px;
   border: 2px solid #f4f5f7;
   padding: 12px;

@@ -5,8 +5,12 @@ export const StyledContainer = styled.div`
   margin: 20px auto;
 `;
 
-export const StyledWrapper = styled.div`
+type StyledWrapperPropsType = {
+  hasLoaded: boolean;
+};
+
+export const StyledWrapper = styled.div<StyledWrapperPropsType>`
   display: flex;
   column-gap: 32px;
-  align-items: flex-start;
+  align-items: ${(props) => (props.hasLoaded ? "flex-start" : "initial")};
 `;
